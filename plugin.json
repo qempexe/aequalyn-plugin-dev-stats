@@ -1,0 +1,11 @@
+{
+  "id": "dev-stats",
+  "label": "Dev stats",
+  "entry": "DevStats.qml",
+  "icon": "",
+  "group": "key",
+  "keys": "Super + Alt + G",
+  "about": "Your GitHub and GitLab contributions: the year's grid, totals and streaks.",
+  "version": "1.0.0",
+  "repo": "https://github.com/qempexe/aequalyn-plugin-dev-stats"
+}
