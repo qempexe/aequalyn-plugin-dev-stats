@@ -2,10 +2,11 @@
   "id": "dev-stats",
   "label": "Dev stats",
   "entry": "DevStats.qml",
+  "widget": "BarWidget.qml",
   "icon": "",
-  "group": "key",
-  "keys": "Super + Alt + G",
-  "about": "Your GitHub and GitLab contributions: the year's grid, totals and streaks.",
-  "version": "1.0.0",
+  "group": "screen",
+  "keys": "",
+  "about": "Your GitHub and GitLab contributions: the last days on the bar, the year in its panel.",
+  "version": "1.1.0",
   "repo": "https://github.com/qempexe/aequalyn-plugin-dev-stats"
 }

@@ -10,14 +10,16 @@ Item {
     property string hovered: ""
     property int picked: -1                      // the day the arrows are on (index in model.flat)
     readonly property color base: theme ? theme.accentPrimary : "#7aa2f7"
-    readonly property color empty: theme ? theme.bgHover : "#2a2a2a"
+    property var colors: []                      // the four shades; without them, the theme's accent
+    property string font: ""
+    property color empty: theme ? theme.bgHover : "#2a2a2a"
     readonly property color ink: theme ? theme.textMuted : "#8a8a8a"
     readonly property var pickedCell: model && picked >= 0 ? model.flat[picked] || null : null
     implicitWidth: (model ? model.cols.length : 53) * (cell + gap) - gap
     implicitHeight: 16 + 7 * (cell + gap) - gap
 
     function shade(level) {
-        return level <= 0 ? grid.empty : Qt.rgba(grid.base.r, grid.base.g, grid.base.b, [0, 0.3, 0.5, 0.75, 1][level])
+        return level <= 0 ? grid.empty : grid.colors.length === 4 ? grid.colors[level - 1] : Qt.rgba(grid.base.r, grid.base.g, grid.base.b, [0, 0.3, 0.5, 0.75, 1][level])
     }
 
     Repeater {
@@ -27,6 +29,7 @@ Item {
             x: modelData.col * (grid.cell + grid.gap)
             text: modelData.label
             color: grid.ink
+            font.family: grid.font !== "" ? grid.font : Qt.application.font.family
             font.pixelSize: 10
         }
     }
