@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # dev-stats helper: account discovery and contribution fetching.
 #
+#   dev-stats.sh state                        makes the settings folder
 #   dev-stats.sh list                          -> JSON array of {provider,host,user}
 #   dev-stats.sh fetch <provider> <host> <user> [year] -> {provider,host,user,days:{"YYYY-MM-DD":n},years:[..]}
 #                                               or {"error":"<code>"}
@@ -104,6 +105,8 @@ cmd_fetch() {
 }
 
 case ${1:-} in
+  # the settings folder, yours alone (0700)
+  state) umask 077; d="${XDG_STATE_HOME:-$HOME/.local/state}/aequalyn-dev-stats"; mkdir -p -m 700 -- "$d" && [[ ! -L $d ]] && chmod 700 -- "$d" ;;
   list)  cmd_list ;;
   fetch) shift; cmd_fetch "$@" ;;
   *)     fail bad-account ;;
